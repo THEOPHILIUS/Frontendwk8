@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+</head>
+<body>
+    <form>
+        <ul>
+            <li>
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" placeholder="enter weight">
+            </li>
+            <li>
+                <label for="height">Height (m)</label>
+                <input type="number" id="height" placeholder="enter height">
+            </li>
+            <li>
+                <button>BMI</button>
+            </li>
+        </ul>
+    </form>
+
+        <section>
+
+
+        </section>
+</body>
+
+<script>
+    const btn = document.querySelector('button')
+    const input = document.getElementsByTagName('input')
+    const sect = document.querySelector('section')
+    const para1 = document.createElement('p')
+    const para2 = document.createElement('p')
+    const para3 = document.createElement('p')
+
+    function calc(e){
+        e.preventDefault()
+        const weight = input[0].value*1
+        const height = input[1].value-0
+        
+        const avg = (weight/height**2).toFixed(2)
+        
+        para1.innerHTML = `BMI:${avg}kgm<sup>-2</sup>`
+        
+        para2.innerHTML = `Status: ${avg >= 30 ? "obesed" : avg >= 25 ? "overweight" : avg >= 18.5 ? "healthy weight" : "underweight"}`
+
+        para3.textContent = `Status: ${avg >= 30 ? "You need to lose weight" : avg >= 25 ? "Reduce your food intake" : avg >= 18.5 ? "Good job , keep it up" : "You need to eat more"}`
+        
+        sect.append(para1,para2,para3)
+    }
+    btn.addEventListener('click', calc)
+</script>
+</html>

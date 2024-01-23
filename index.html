@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <ul>
+            <li>
+            <label for="mth">Math</label>
+            <input type="number" name="mth" id="mth" placeholder="score in mathematics">
+        </li>
+        <li>
+            <label for="eng">English</label>
+            <input type="text" name="eng" id="eng" placeholder="score in english">
+        </li>
+        <li>
+            <button>check avg</button>
+        </li>
+    </ul>
+    </form>
+
+    <section>
+
+
+    </section>
+</body>
+
+<script>
+    const input = document.getElementsByTagName('input')
+    const btn = document.querySelector('button')
+    const sect = document.querySelector('section')
+    const para1 = document.createElement('p')
+    const para2 = document.createElement('p')
+
+    function calc(e){
+        e.preventDefault()
+        const math = input[1].value-0
+        const eng = input[0].value*1
+        
+        const avg = (math+eng)/2
+
+        para1.textContent = 'Average score is: ' + avg
+        //para2.textContent =  `Grade: ${avg >= 50 ? "pass" : "Fail"}`
+        para2.textContent =  `Grade: ${avg >= 70 ? "A" : avg >= 60 ? "B" : avg >= 50 ? "C" : "FF"}`
+        sect.style.backgroundColor = `${avg >= 70? 'green' : avg >= 50 ? "orange" : "red"}`
+
+        sect.append(para1,para2)
+
+        // alert(avg)
+    }
+    btn.addEventListener('click', calc)
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>roman figure</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <input type="number" id="number" placeholder="enter a number" min="1" max="3999">
+            <button>check</button>
+        </li>
+    </ul>
+    <p></p>
+
+    <script>
+        const fig = document.querySelector('input')
+        const pee = document.querySelector('p')
+        const btn = document.querySelector('button')
+
+        function roman(c){
+            c.preventDefault()
+            const num = fig.value
+            const units = ['','i','ii','iii','iv','v','vi','vii','viii','ix']
+            const tens = ['','x','xx','xxx','x','l','lx','lxx','lxxx','xc']
+            const huns = ['','c','cc','ccc','cd','d','dc','dcc','dccc','cm']
+            const thos = ['','m','mm','mmm','m⊽','⊽','⊽m']
+
+            let result
+
+            num.length ==1 ? result = units[num] : ''
+            num.length ==2 ? result = tens[num[0]]+units[num[1]] : ''
+            num.length ==3 ? result = huns[num[0]]+tens[num[1]]+units[num[2]] : ''
+            num.length ==4 ? result = thos[num[0]]+huns[num[1]]+tens[num[2]]+units[num[3]] : ''
+
+            pee.textContent = result.toUpperCase()
+        }
+
+        btn.addEventListener('click', roman)
+    </script>
+</body>
+</html>
